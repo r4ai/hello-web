@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple ToDo</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Simple ToDo</h1>
+
+      <!-- タスク入力フォーム -->
+      <form id="todo-input-form">
+        <input
+          id="todo-input"
+          type="text"
+          placeholder="やることを入力..."
+          autofocut
+        />
+        <button>追加</button>
+      </form>
+
+      <!-- タスク一覧 -->
+      <ul id="todo-list"></ul>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
