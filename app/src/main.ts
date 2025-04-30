@@ -6,12 +6,31 @@ type Todo = {
   done: boolean;
 };
 
+/**
+ * todosとnextIdをローカルストレージから取得する
+ */
+const loadTodos = (): { todos: Todo[]; nextId: number } => {
+  const todosJson = localStorage.getItem("todos");
+  if (todosJson) {
+    const todos = JSON.parse(todosJson);
+    const nextId = Math.max(...todos.map((todo: Todo) => todo.id), 0) + 1;
+    return { todos, nextId };
+  }
+  return { todos: [], nextId: 1 };
+};
+
+/**
+ * todosをローカルストレージに保存する
+ */
+const saveTodos = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
 const formElm = document.querySelector<HTMLFormElement>("#todo-form")!;
 const inputElm = document.querySelector<HTMLInputElement>("#todo-input")!;
 const listElm = document.querySelector<HTMLUListElement>("#todo-list")!;
 
-let todos: Todo[] = [];
-let nextId = 1;
+let { todos, nextId } = loadTodos();
 
 /**
  * タスクリストを描画する
@@ -49,6 +68,7 @@ formElm.addEventListener("submit", (event) => {
 
   // 得られた値をもとに新しいタスクを作成
   todos.push({ id: nextId++, text, done: false });
+  saveTodos();
 
   // 入力欄を空にする
   inputElm.value = "";
@@ -85,7 +105,13 @@ listElm.addEventListener("click", (event) => {
     // タスクを削除
     todos = todos.filter((todo) => todo.id !== id);
   }
+  saveTodos();
 
   // タスクのリストを再描画
+  renderTodoList();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // タスクリストを描画
   renderTodoList();
 });
