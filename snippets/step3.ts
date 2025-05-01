@@ -70,11 +70,11 @@ listElm.addEventListener("click", (event) => {
   if (!(event.target instanceof HTMLElement)) return;
 
   // タスクリストの要素を取得
-  const listItemElement = event.target.closest<HTMLLIElement>("li");
-  if (!listItemElement) return;
+  const listItemElm = event.target.closest<HTMLLIElement>("li");
+  if (!listItemElm) return;
 
   // ボタンが押されたタスクのIDを取得
-  const id = Number(listItemElement.dataset.id);
+  const id = Number(listItemElm.dataset.id);
 
   // 続く...
   // #endregion

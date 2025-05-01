@@ -7,6 +7,7 @@ background: ./assets/title.png
 fonts:
   sans: M PLUS Rounded 1c
 monaco: true
+mdc: true
 addons:
   - tldraw
   - fancy-arrow
@@ -217,14 +218,27 @@ layout: section
   - 例：ボタンをクリックしたら、商品がカートに追加される \
     　　（クリック時の処理を JavaScript で記述する）
 
-<br>
+---
+
+## TypeScript 入門
 
 - **TypeScript (TS)** は、 JavaScript のスーパーセット（JavaScriptで出来ることはTypeScriptでも出来る）
 
   - JavaScript に型を追加した言語
+    - 型検査以外の機能は提供しない（と思って支障ない）
+    - ⇒ 型の関する記述を全部消せば JavaScript として動く（実行時の動作に影響を与えない）
+    - ⇒ Compiler というよりは Linter のような役割を果たす
   - 型を追加することで、コードの可読性や保守性が向上する
   - 本講義では TypeScript を使用するが、難しい独自機能はほぼ使用しない
     - ⇒ ほぼ JavaScript だと思ってもらって OK
+
+<br>
+
+```ts twoslash
+let fruit: "apple" | "banana"; // fruit には "apple" または "banana" のみ代入可能
+fruit = "apple";  // OK
+fruit = "orange"; // NG
+```
 
 ---
 
@@ -406,7 +420,7 @@ console.log(person.age); // 25
   localStorage.setItem("todos", JSON.stringify(todos));
 
   // load
-  todos = JSON.parse(localStorage.getItem("todos") || "[]");
+  todos = JSON.parse(localStorage.getItem("todos") ?? "[]");
   ```
 
 ---
@@ -424,7 +438,6 @@ console.log(person.age); // 25
 ロードマップ：https://roadmap.sh/frontend
 
 👆 Web開発に必要な知識と、学ぶべき順番が示されている
-
 
 ---
 
@@ -448,7 +461,7 @@ console.log(person.age); // 25
 
 - Q. 何からやれば良いかわからない
 
-  - A. 自分の作りたいアプリ等があれば、AI等に相談しながらそれを作ってみるのが良いと思います。アプリ開発に必要な知識は全体像は、https://roadmap.sh/frontend や [100+ Web Development Things you Should Know | Fireship (YouTube)](https://www.youtube.com/watch?v=erEgovG9WBs) を参考にすると良いと思います。
+  - A. 自分の作りたいアプリ等があれば、AI等に相談しながらそれを作ってみるのが良いと思います。アプリ開発に必要な知識は全体像は、[Frontend Developer Roadmap | roadmap.sh](https://roadmap.sh/frontend) や [100+ Web Development Things you Should Know | Fireship (YouTube)](https://www.youtube.com/watch?v=erEgovG9WBs) を参考にすると良いと思います。
 
 - Q. 本は買った方がいいですか？
 
@@ -464,6 +477,7 @@ console.log(person.age); // 25
 - [基礎から学ぶ JavaScript 入門 | しまぶーのIT大学 (YouTube)](https://www.youtube.com/watch?v=pnsieVYy72M&list=PLwM1-TnN_NN7-zdRV8YsGUB82VVhfYiWW)
 - [サバイバルTypeScript](https://typescriptbook.jp/)
 - [The Modern JavaScript Tutorial](https://ja.javascript.info/)
+- [JavaScript Primer - 迷わないための入門書](https://jsprimer.net/)
 - [開発者向けのウェブ技術 | MDN](https://developer.mozilla.org/ja/docs/Web)
 
 ---
