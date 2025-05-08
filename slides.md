@@ -11,6 +11,7 @@ mdc: true
 addons:
   - tldraw
   - fancy-arrow
+  - qrcode
 ---
 
 # Vite × TypeScript で作る
@@ -20,13 +21,33 @@ addons:
 **所要時間:** 90  分  
 **対象:** Web 開発初心者 / RICORA 新入生
 
+<QRCode
+  type="svg"
+  data="https://r4ai.github.io/hello-web/slides/"
+  :width="140"
+  :height="140"
+  style="background: white; padding: 8px; width: fit-content; border-radius: 8px; position: absolute; top: 20px; right: 20px;"
+/>
+
 ---
-layout: center
+layout: iframe-right
+url: https://r4ai.github.io/hello-web/app/
 ---
 
 ## 完成デモ
 
-ここに完成ページを埋め込む
+本講座で作成するアプリのデモ：
+
+
+<QRCode
+  type="svg"
+  data="https://r4ai.github.io/hello-web/app/"
+  :width="100"
+  :height="100"
+  style="background: white; padding: 8px; width: fit-content; border-radius: 8px;"
+/>
+
+https://r4ai.github.io/hello-web/app/
 
 ---
 layout: center
