@@ -582,7 +582,45 @@ todoForm?.addEventListener("submit", (event) => {
 
 ## 実装 ①
 
-タスク一覧の表示
+Step 1: タスク一覧の表示
+
+- 目標：`todos` に格納されているタスク一覧を画面上に表示する関数 `renderTodoList` を実装する
+
+次のような HTML を出力するように実装しよう：
+
+::div{class="flex flex-row gap-4 *:w-full w-full justify-center !mt-2"}
+```ts
+let todos: Todo[] = [
+  { id: 1, text: "タスク1", done: false },
+  { id: 2, text: "タスク2", done: true },
+];
+```
+
+:::div{class="!w-fit my-auto"}
+⇒
+:::
+
+```html
+<ul id="todo-list">
+  <li data-id="1">
+    <input type="checkbox" class="toggle">
+    <span>タスク1</span>
+    <button class="remove">✕</button>
+  </li>
+  <li data-id="2" class="done">
+    <input type="checkbox" class="toggle" checked="">
+    <span>タスク2</span>
+    <button class="remove">✕</button>
+  </li>
+</ul>
+```
+::
+
+---
+
+## 実装 ①
+
+Step 1: タスク一覧の表示
 
 <<< ./snippets/step1.ts#step1
 
@@ -590,7 +628,21 @@ todoForm?.addEventListener("submit", (event) => {
 
 ## 実装 ②
 
-タスク追加機能
+Step 2: タスク追加機能
+
+- 目標：タスクを追加する処理を実装する
+
+タスク入力フォームのsubmit時に、次の処理を行うようにしよう：
+
+1. 入力されたテスクを、`todos` に追加する（`#todo-input` の値を取得して、`todos` に追加）
+2. 入力フォームを空にする（`#todo-input` の値を空にする）
+3. `renderTodoList` を呼び出して、タスク一覧を再描画する
+
+---
+
+## 実装 ②
+
+Step 2: タスク追加機能
 
 <<< ./snippets/step2.ts#step2
 
@@ -598,7 +650,15 @@ todoForm?.addEventListener("submit", (event) => {
 
 ## 実装 ③
 
-タスク削除機能
+Step 3: タスク削除・完了切り替え機能
+
+- 目標：タスクの削除、完了切り替えの処理を実装する
+
+---
+
+## 実装 ③
+
+Step 3: タスク削除・完了切り替え機能
 
 <<< ./snippets/step3.ts#step3-1
 
@@ -606,7 +666,7 @@ todoForm?.addEventListener("submit", (event) => {
 
 ## 実装 ③
 
-タスク削除機能
+Step 3: タスク削除・完了切り替え機能
 
 <<< ./snippets/step3.ts#step3-2
 
@@ -615,7 +675,7 @@ todoForm?.addEventListener("submit", (event) => {
 
 ## 実装 ④ (発展)
 
-データの永続化（LocalStorage）
+Step 4: データの永続化（LocalStorage）
 
 - **ヒント**：LocalStorage を使用して、タスクを保存・読み込みを行う例
 
@@ -634,6 +694,8 @@ todoForm?.addEventListener("submit", (event) => {
   // load
   todos = JSON.parse(localStorage.getItem("todos") ?? "[]");
   ```
+
+実装例：https://github.com/r4ai/hello-web/blob/main/app/src/main.ts
 
 ---
 
