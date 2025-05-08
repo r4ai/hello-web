@@ -55,9 +55,11 @@ layout: center
 
 ## 本日のゴール
 
-1. **Vite** で開発環境を構築できるようになる
-2. **HTML → CSS → TypeScript** の流れで Web 開発（フロントエンド）の基礎を理解
-3. ブラウザだけで動く **To‑Do アプリ** を完成させる
+<br>
+
+1. **HTML → CSS → TypeScript (JavaScript)** の流れで、\
+   Web 開発（フロントエンド）の基礎を理解
+2. ブラウザだけで動く **To‑Do アプリ** を完成させる
 
 ---
 
@@ -385,6 +387,195 @@ const person: Person = {
 
 console.log(person.name); // Alice
 console.log(person.age); // 25
+```
+
+---
+
+## TypeScript 入門
+
+`console.log`を用いたデバッグ
+
+- プログラムのデバッグには、`console.log` が便利
+- `console.log` を使用して、変数の値や処理の結果をコンソールに出力することで、
+  プログラムの挙動を確認することができる
+
+```ts {monaco-run}
+let count = 0;
+const increment = () => {
+  count++;
+  console.log(`Count: ${count}`);
+};
+increment(); // Count: 1
+increment(); // Count: 2
+```
+
+---
+layout: image-right
+image: ./assets/devtools.png
+---
+
+## TypeScript 入門
+
+`console.log`を用いたデバッグ
+
+- `console.log`の出力は、ブラウザの開発者ツールの `Console` タブで確認できる
+
+- **開発者ツールの開き方：**
+
+  1. `F12` キー または `Ctrl + Shift + I` を押す
+
+  2. `Console` タブを選択する
+
+---
+layout: two-cols-header
+---
+
+## TypeScript 入門
+
+DOM 操作
+
+::left::
+
+::div{class="mr-12"}
+
+- **DOM**（Document Object Model）は、HTML ドキュメントの構造を表すオブジェクトのデータ表現（木構造）
+- この DOM を操作することで、Web ページの内容を動的に変更することができる
+- DOM の操作には、JavaScript の `document` オブジェクトのAPIを使用する
+
+::
+
+::right::
+
+```html
+<html lang="en">
+  <head>
+    <title>My Document</title>
+  </head>
+  <body>
+    <h1>Header</h1>
+    <p>Paragraph</p>
+  </body>
+</html>
+```
+
+<div class="text-center w-full">↓</div>
+
+<figure class="mx-auto mt-2">
+  <img class="w-[50%] mx-auto" src="./assets/dom.png" />
+  <figcaption class="text-center text-xs mt-2">
+    出典：<a href="https://developer.mozilla.org/ja/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax">MDN Web Docs「ドキュメントオブジェクトモデルの使用」</a>
+  </figcaption>
+</figure>
+---
+
+## TypeScript 入門
+
+DOM 操作 (要素の取得)
+
+- HTML 要素を取得するには、`document.querySelector` を使用する
+
+- 使い方：`document.querySelector<要素の型>(CSSセレクタ)`
+
+  - CSSセレクタは、とりあえず次を覚えておけば OK
+    - `#id名`：IDセレクタ（例：`#todo-input`）
+
+  - 要素の型は省略しても良いが、なるべく指定すると型検査が効くので良い
+
+<br>
+
+```ts {monaco}
+// idが"todo-input"の要素を取得
+const todoInput = document.querySelector<HTMLInputElement>("#todo-input");
+```
+
+---
+
+## TypeScript 入門
+
+DOM 操作 (要素の作成)
+
+- HTML 要素を作成するには、`document.createElement` を使用する
+- 使い方：`document.createElement(要素名)`
+
+<br>
+
+```ts {monaco}
+// 1. 次の要素を作成する：`<div class="todoItem" data-id="1">Hello, World!</div>`
+const divElm = document.createElement("div");
+divElm.textContent = "Hello, World!"; // テキストを追加
+divElm.classList.add("todo-item"); // クラスを追加
+divElm.dataset.id = "1"; // データ属性を追加
+
+// 2. 作成した要素を body に追加
+document.body.appendChild(divElm);
+
+// 以上の操作の結果：
+// <body>
+//   ... (省略)
+//   <div class="todo-item" data-id="1">Hello, World!</div>
+// </body>
+```
+
+---
+
+## TypeScript 入門
+
+DOM 操作 (要素の削除)
+
+- HTML 要素を削除するには、`parentElement.removeChild` を使用する
+- 使い方：`親の要素.removeChild(削除する要素)`
+
+<br>
+
+```ts {monaco}
+// 1. idが"todo-item-1"の要素を取得
+const todoItem = document.querySelector("#todo-item-1");
+
+// 2. 親要素から削除
+todoItem?.parentElement?.removeChild(todoItem);
+```
+
+::div{class="!text-sm p-2 border border-zinc-4 dark:border-zinc-8 rounded-lg mt-4 *:!my-0"}
+コラム：`?.` は、オプショナルチェイニング演算子で、null または undefined の場合にエラーを回避するために使用する。\
+次の２つは同じ意味である：
+
+:::div{class="flex flex-row gap-2 *:w-full w-full justify-center !mt-2"}
+```ts
+let result = undefined;
+if (foo != null) {
+  result = foo.bar();
+}
+```
+```ts
+let result = foo?.bar();
+```
+:::
+::
+
+---
+
+## TypeScript 入門
+
+DOM 操作 (イベントリスナー)
+
+- HTML 要素にイベントリスナーを追加するには、`addEventListener` を使用する
+- 使い方：`要素.addEventListener(イベント名, コールバック関数)`
+  - イベント名は、`click` や `input` などの文字列で指定する
+  - コールバック関数は、イベントが発生したときに実行される関数
+
+```ts {monaco}
+// 1. idが"todo-form"の要素を取得
+const todoForm = document.querySelector<HTMLFormElement>("#todo-form");
+
+// 2. フォームのsubmit時に実行される関数を与える
+todoForm?.addEventListener("submit", (event) => {
+  event.preventDefault(); // フォームのデフォルトの動作をキャンセル（おまじない）
+  
+  // 入力された値を取得し、コンソールへ出力する
+  const todoInput = document.querySelector<HTMLInputElement>("#todo-input");
+  const todoText = todoInput?.value; // 入力された値を取得
+  console.log(todoText); // 入力された値をコンソールに出力
+});
 ```
 
 ---
