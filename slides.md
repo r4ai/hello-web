@@ -283,6 +283,9 @@ const age = 25;
 age = 30; // エラー: 再代入不可
 ```
 
+<span class="text-sm">参考文献：https://ja.javascript.info/variables</span>
+
+
 ---
 
 ## TypeScript 入門
@@ -305,6 +308,8 @@ age = "25";    // エラー: 型 'string' を 'number' に割り当てること�
 isStudent = 1; // エラー: 型 'number' を 'boolean' に割り当てることはできません
 ```
 
+<span class="text-sm">参考文献：https://typescript-jp.gitbook.io/deep-dive/type-system</span>
+
 ---
 
 ## TypeScript 入門
@@ -320,6 +325,8 @@ const greet = (name: string) => {
 
 greet("Alice"); // Hello, Alice!
 ```
+
+<span class="text-sm">参考文献：https://typescriptbook.jp/reference/functions/arrow-functions</span>
 
 ---
 
@@ -338,6 +345,14 @@ if (age >= 18) {
 }
 ```
 
+<span class="text-sm">参考文献：https://ja.javascript.info/ifelse</span>
+
+---
+
+## TypeScript 入門
+
+制御フロー
+
 - `for` 文でループ処理を行う
 
 ```ts {monaco-run}
@@ -345,6 +360,8 @@ for (let i = 0; i < 3; i++) {
   console.log(i);
 }
 ```
+
+<span class="text-sm">参考文献：https://ja.javascript.info/while-for</span>
 
 ---
 
@@ -366,6 +383,8 @@ fruits.pop(); // 要素削除
 console.log(fruits); // ["apple", "banana", "orange"]
 ```
 
+<span class="text-sm">参考文献：https://ja.javascript.info/array</span>
+
 ---
 
 ## TypeScript 入門
@@ -373,12 +392,13 @@ console.log(fruits); // ["apple", "banana", "orange"]
 オブジェクト
 
 - オブジェクトは `{}` で定義し、プロパティを格納する
+- プロパティは、キーと値のペア（`key: value`）で構成される
 
 ```ts {monaco-run}
 type Person = {
   name: string;
   age: number;
-}
+};
 
 const person: Person = {
   name: "Alice",
@@ -388,6 +408,8 @@ const person: Person = {
 console.log(person.name); // Alice
 console.log(person.age); // 25
 ```
+
+<span class="text-sm">参考文献：https://ja.javascript.info/object</span>
 
 ---
 
@@ -408,6 +430,8 @@ const increment = () => {
 increment(); // Count: 1
 increment(); // Count: 2
 ```
+
+<span class="text-sm">参考文献：https://ja.javascript.info/devtools</span>
 
 ---
 layout: image-right
@@ -441,6 +465,8 @@ DOM 操作
 - **DOM**（Document Object Model）は、HTML ドキュメントの構造を表すオブジェクトのデータ表現（木構造）
 - この DOM を操作することで、Web ページの内容を動的に変更することができる
 - DOM の操作には、JavaScript の `document` オブジェクトのAPIを使用する
+
+<span class="text-sm">参考文献：https://ja.javascript.info/dom-nodes</span>
 
 ::
 
