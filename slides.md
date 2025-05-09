@@ -579,6 +579,53 @@ todoForm?.addEventListener("submit", (event) => {
 ```
 
 ---
+layout: section
+---
+
+# 実装
+
+ToDo アプリを実装してみよう
+
+---
+layout: image-right
+image: ./assets/template.png
+---
+
+## 実装 ⓪
+
+1. https://github.com/r4ai/hello-web-template を開く
+
+2. "Use this template" → "Create a new repository" をクリックし、リポジトリを作成する
+
+   リポジトリ名は適当で OK
+
+---
+layout: image-right
+image: ./assets/codespaces.png
+---
+
+## 実装 ⓪
+
+3. "Code" → "Codespaces" → "Create codespace on main" をクリックし、Codespace を作成する
+
+4. Codespace が立ち上がったら、以下のコマンドをターミナルで実行する
+
+   1. 依存関係のインストール
+
+      ```sh
+      npm install
+      ```
+
+   2. 開発サーバーの起動
+
+      ```sh
+      npm run dev
+      ```
+
+5. ブラウザで `http://localhost:5173` を開く
+
+
+---
 
 ## 実装 ①
 
